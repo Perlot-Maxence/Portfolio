@@ -3,7 +3,8 @@ import { FaDatabase, FaLink, FaNode } from "react-icons/fa";
 import { RiFirebaseFill, RiJavaFill, RiJavaLine, RiJavascriptFill, RiReactjsFill, RiSupabaseFill, RiTailwindCssFill } from "react-icons/ri";
 import { SiChartdotjs, SiElectron, SiGodotengine, SiHibernate, SiJavascript, SiSpring, SiTypescript } from "react-icons/si";
 import i18n from "../i18n.json";
-import ScrollAnimation from "react-animate-on-scroll";
+import {motion} from "framer-motion";
+import "animate.css";
 
 export default function Knowledge({ language }) {
   const data = [
@@ -106,7 +107,12 @@ export default function Knowledge({ language }) {
       <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 pt-5 '>
 
         {data.map((item, index) => (
-          <ScrollAnimation delay={index * 2} animateIn={Math.round(Math.random()) == 0 ? "fadeInLeft" : "fadeInRight"} className='w-4/5 lg:w-full' key={index}>
+          <motion.div 
+            initial={{ x: Math.random() > 0.5 ? 500 : -500 }}
+            whileInView={{ x: 0 }}
+            transition={{ duration: 0.7, ease: "backOut" }}
+          
+          className='w-4/5 lg:w-full' key={index}>
             <a href={item.link}>
               <div className='bg-gray-800 p-3 rounded-lg flex gap-5 hover:bg-gray-600 transition-all duration-300'>
                 <item.icon size={64} color="var(--color-primary)" className="p-1 rounded" />
@@ -116,7 +122,7 @@ export default function Knowledge({ language }) {
                 </div>
               </div>
             </a>
-          </ScrollAnimation>
+          </motion.div>
         ))}
       </div>
     </section>

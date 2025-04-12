@@ -1,10 +1,11 @@
 import "animate.css/animate.compat.css"
 import { useEffect, useLayoutEffect, useState } from 'react'
-import ScrollAnimation from 'react-animate-on-scroll'
 import { FaArchive } from 'react-icons/fa'
 import { MdMail } from 'react-icons/md'
 import { RxCross2 } from "react-icons/rx"
 import Modal from 'react-modal'
+import { motion } from "motion/react"
+import Select from 'react-select'
 import { toast } from 'sonner'
 import './App.css'
 import FooterComponent from './components/Footer'
@@ -13,8 +14,9 @@ import Navbar from './components/Navbar'
 import Projects from './components/Projects'
 import ScrollIndicator from './components/Scrollindicator'
 import i18n from "./i18n.json"
-import Select from 'react-select'
 import mailPreset from "./mailpreset.json"
+import 'animate.css';
+
 
 function App() {
 
@@ -186,7 +188,12 @@ function App() {
       <ScrollIndicator />
       <Navbar language={language} />
       <div className='h-screen p-5 lg:p-[15rem] pt-10 pb-60'>
-        <ScrollAnimation animateIn='fadeInUp' >
+        <motion.div 
+          initial={{ opacity: 0, y: 500 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
           <h1 className='wosker text-3xl lg:text-8xl lg:text-center' dangerouslySetInnerHTML={{ __html: i18n[language].title }}></h1>
 
           <div className='flex flex-col lg:flex-row w-full justify-center items-center mt-10 gap-5'>
@@ -197,19 +204,13 @@ function App() {
               {i18n[language].contact} <MdMail />
             </button>
           </div>
-        </ScrollAnimation>
+        </motion.div>
 
 
         <Knowledge language={language} />
+        <Projects language={language} />
+        <FooterComponent language={language} openMailModal={() => setMailModalOpen(true)} />
 
-
-        <ScrollAnimation animateIn='fadeInUp' className="w-4/5 lg:w-full">
-          <Projects language={language} />
-        </ScrollAnimation>
-
-        <ScrollAnimation animateIn='fadeIn' className="w-5/6 lg:w-full">
-          <FooterComponent language={language} openMailModal={() => setMailModalOpen(true)} />
-        </ScrollAnimation>
 
 
 

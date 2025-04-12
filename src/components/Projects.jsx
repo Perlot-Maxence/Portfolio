@@ -4,14 +4,15 @@ import discordThumbnail from "../assets/discordJisho.png"
 import MinazonThumbnail from "../assets/minazon.png"
 import SteamThumbnail from "../assets/Steam-logo.svg"
 import RaspberryThumbnail from "../assets/raspberry.jpg"
+import { motion } from "framer-motion";
 
-export default function Projects({language}) {
+export default function Projects({ language }) {
   const data = [
     {
       title: "Discord Jisho Dictionnary",
       description: language === "fr" ?
-      "Un plugin Discord qui intègre un dictionnaire japonais et la lecture simplifé de caractères." :
-      "A Discord plugin that integrates a Japanese dictionary and simplified character reading.",
+        "Un plugin Discord qui intègre un dictionnaire japonais et la lecture simplifé de caractères." :
+        "A Discord plugin that integrates a Japanese dictionary and simplified character reading.",
       thumbnail: discordThumbnail,
       badges: ["Plugin"],
       links: [
@@ -22,8 +23,8 @@ export default function Projects({language}) {
     {
       title: "Steam UI Remake",
       description: language === "fr" ?
-      "Un projet de refonte de l'interface utilisateur de Steam, mettant en avant mes compétences de développement.":
-      "A project to remake the Steam UI, showcasing my development skills.",
+        "Un projet de refonte de l'interface utilisateur de Steam, mettant en avant mes compétences de développement." :
+        "A project to remake the Steam UI, showcasing my development skills.",
       thumbnail: SteamThumbnail,
       badges: ["React", "UI", "Web"],
       links: [
@@ -34,8 +35,8 @@ export default function Projects({language}) {
     {
       title: "Minazon",
       description: language === "fr" ?
-      "Un projet permettant aux utilisateurs d'organiser des échanges sécurisés sur le jeu Minecraft." :
-      "A project allowing users to organize secure exchanges on the Minecraft game.",
+        "Un projet permettant aux utilisateurs d'organiser des échanges sécurisés sur le jeu Minecraft." :
+        "A project allowing users to organize secure exchanges on the Minecraft game.",
       thumbnail: MinazonThumbnail,
       badges: ["React", "UI", "Web"],
       links: [
@@ -46,8 +47,8 @@ export default function Projects({language}) {
     {
       title: "RaspHome",
       description: language === "fr" ?
-      "Un projet de gestion de la domotique depuis une Raspberry Pi." :
-      "A project to manage home automation from a Raspberry Pi.",
+        "Un projet de gestion de la domotique depuis une Raspberry Pi." :
+        "A project to manage home automation from a Raspberry Pi.",
       thumbnail: RaspberryThumbnail,
       badges: ["React", "UI", "Web"],
       links: [
@@ -59,14 +60,20 @@ export default function Projects({language}) {
 
 
   return (
-    <section className='mt-[30vh]' id='projects'>
-      <h1 className='font-bold text-3xl flex gap-2 items-center justify-center ml-[38px]'>
-        {i18n[language].projects} <a href="#projects"><FaLink className='opacity-15 hover:opacity-75' /></a>
-      </h1>
-      <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 pt-5'>
+    <motion.div
+      initial={{ opacity: 0, y: 500 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+
+      <section className='mt-[30vh]' id='projects'>
+        <h1 className='font-bold text-3xl flex gap-2 items-center justify-center ml-[38px]'>
+          {i18n[language].projects} <a href="#projects"><FaLink className='opacity-15 hover:opacity-75' /></a>
+        </h1>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 pt-5'>
 
 
-        {data.map((item, index) => (
+          {data.map((item, index) => (
             <div className='bg-gray-800 shadow-xl p-2 rounded-lg flex flex-col relative' key={index}>
               <img src={item.thumbnail} alt={item.title + " thumbnail"} className='w-full h-40 object-contain rounded-lg' />
               <h2 className='text-xl font-bold'>{item.title}</h2>
@@ -91,9 +98,10 @@ export default function Projects({language}) {
               }
 
             </div>
-        ))}
+          ))}
 
-      </div>
-    </section>
+        </div>
+      </section>
+    </motion.div>
   )
 }
