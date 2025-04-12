@@ -96,7 +96,7 @@ function App() {
       return;
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend(process.env.VITE_RESEND_API_KEY);
 
     try {
       document.querySelector("#sendMailBTN").disabled = true;
@@ -184,7 +184,7 @@ function App() {
       <Navbar language={language} />
       <div className='h-screen p-5 lg:p-[15rem] pt-10 pb-60'>
         <ScrollAnimation animateIn='fadeInUp' >
-          <h1 className='wosker text-3xl lg:text-8xl font-extrabold lg:text-center' dangerouslySetInnerHTML={{ __html: i18n[language].title }}></h1>
+          <h1 className='wosker text-3xl lg:text-8xl font-bold lg:text-center' dangerouslySetInnerHTML={{ __html: i18n[language].title }}></h1>
 
           <div className='flex flex-col lg:flex-row w-full justify-center items-center mt-10 gap-5'>
             <a className='btn btn-outline text-2xl' href='#knowledge'>
