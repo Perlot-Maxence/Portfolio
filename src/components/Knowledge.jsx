@@ -100,6 +100,8 @@ export default function Knowledge({ language }) {
     },
   ]
 
+  const isPhone = window.innerWidth < 768;
+
 
   return (
     <section className='pt-[30vh] mt-[20vh]' id='knowledge'>
@@ -108,8 +110,8 @@ export default function Knowledge({ language }) {
 
         {data.map((item, index) => (
           <motion.div 
-            initial={{ x: Math.random() > 0.5 ? 500 : -500 }}
-            whileInView={{ x: 0 }}
+            initial={{ x: !isPhone ? Math.random() > 0.5 ? 500 : -500 : 0, y: isPhone ? 100 : 0 }}
+            whileInView={{ x: 0, y: 0 }}
             transition={{ duration: 0.7, ease: "backOut" }}
           
           className='w-4/5 lg:w-full' key={index}>
