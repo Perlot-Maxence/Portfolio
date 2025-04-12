@@ -1,0 +1,15 @@
+{
+  "fr": {
+    "empty": "",
+    "poste": "Bonjour Maxence,\n\nJ'espère que vous allez bien.\n\nJe me permets de vous contacter afin de vous proposer un poste de développeur informatique au sein de (Nom de l'entreprise).\n\nLe poste implique principalement :\n - (Listez les tâches principales du poste ici)\n - (Listez les tâches principales du poste ici)\n - (Listez les tâches principales du poste ici)\n\nSi vous êtes disponible, je serais heureux de planifier un entretien à votre convenance pour en parler davantage.\n\nDans l'attente de votre retour, je vous prie d'agréer, Maxence, l'expression de mes salutations distinguées.\n\nCordialement,\n(Vos coordonnées)",
+    "rdv": "Bonjour Maxence,\n\nJ'espère que vous allez bien.\n\nJe tenais à vous faire part de mon intérêt pour votre profil. Cependant, avant de m'engager dans un processus de recrutement, j'aimerais m'assurer que nous partageons une vision commune sur certains aspects clés.\nJe souhaiterais échanger davantage sur ce sujet et discuter de la manière dont nous pourrions avancer ensemble.\n\nSeriez-vous disponible pour un rendez-vous à l'une de ces dates ?\n - (date 1 et heure)\n - (date 2 et heure)\n - (date x et heure)\n\nDans l'attente de votre retour, je vous prie d'agréer, Monsieur PERLOT, l'expression de mes salutations distinguées.\n\nCordialement,\n(Vos coordonnées)"
+  },
+  "en": {
+    "empty": "",
+    "poste": "Hello Maxence,\n\nI hope you are doing well.\n\nI am reaching out to offer you a position as a software developer at (Company Name).\n\nThe position mainly involves:\n - (List the main tasks of the position here)\n - (List the main tasks of the position here)\n - (List the main tasks of the position here)\n\nIf you are available, I would be happy to schedule an interview at your convenience to discuss it further.\n\nLooking forward to hearing from you, I remain at your disposal.\n\nBest regards,\n(Your contact information)",
+    "rdv": "Hello Maxence,\n\nI hope you are doing well.\n\nI wanted to express my interest in your profile. However, before committing to a recruitment process, I would like to ensure that we share a common vision on certain key aspects.\nI would like to discuss this further and explore how we could move forward together.\n\nWould you be available for a meeting on one of these dates?\n - (date 1 and time)\n - (date 2 and time)\n - (date x and time)\n\nLooking forward to hearing from you, I remain at your disposal.\n\nBest regards,\n(Your contact information)"
+  }
+}
+
+
+

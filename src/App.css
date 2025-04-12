@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+
+@theme {
+          --color-primary:#00e8a3;
+          --color-primary-dark:#00be85;
+
+          --color-aquamarine-50: #edfff9;
+          --color-aquamarine-100: #d5fff3;
+          --color-aquamarine-200: #aeffe7;
+          --color-aquamarine-300: #6fffd6;
+          --color-aquamarine-400: #0bfeb5;
+          --color-aquamarine-500: #00e8a3;
+          --color-aquamarine-600: #00be85;
+          --color-aquamarine-700: #00976a;
+          --color-aquamarine-800: #057656;
+          --color-aquamarine-900: #066148;
+          --color-aquamarine-950: #003726;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/* Hide scrollbar for all elements */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
+  scroll-snap-align: middle;
+}
+
+@font-face {
+  font-family: 'wosker';
+  src: url(assets/Wosker\ Demo.otf);
+}
+
+.wosker {
+  font-family: 'wosker', sans-serif;
+}
+
+@font-face {
+  font-family: 'boardwalk';
+  src: url(./assets/Boardwalk\ avenu.woff2);
+}
+
+.boardwalk {
+  font-family: 'boardwalk';
+}
+
+.btn {
+  @apply font-semibold py-2 px-4 rounded inline-flex gap-2 items-center cursor-pointer transition duration-200;
+}
+
+.btn-primary {
+  @apply bg-primary text-black hover:bg-primary-dark;
+}
+
+.btn-outline {
+  @apply border border-primary text-primary hover:text-white  hover:bg-primary-dark;
+}
+
+.btn-link {
+  @apply text-primary hover:text-aquamarine-600;
+}
+
+.btn-disabled {
+  @apply bg-gray-200 text-gray-400 cursor-not-allowed;
+}
+
+
+@keyframes mouseAnimation {
+  from {
+    bottom: 65%;
+  }
+  to {
+    bottom: 10%;
+    opacity: 0;
+  }
+  
+}
+
+.animation_mouse {
+  transform: translateX(-50%);
+  animation: mouseAnimation 1.5s infinite ease-in-out;
+}
