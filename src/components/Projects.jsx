@@ -64,6 +64,7 @@ export default function Projects({ language }) {
       initial={{ opacity: 0, y: 500 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      className="w-5/6 lg:w-full"
     >
 
       <section className='mt-[30vh]' id='projects'>

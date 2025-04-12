@@ -104,9 +104,9 @@ export default function Knowledge({ language }) {
 
 
   return (
-    <section className='pt-[30vh] mt-[20vh]' id='knowledge'>
+    <section className='pt-[30vh] mt-[20vh] w-5/6 lg:w-full' id='knowledge'>
       <h1 className='font-bold text-3xl flex gap-2 items-center justify-center ml-[38px]'>{i18n[language].skills} <a href="#knowledge"><FaLink className='opacity-15 hover:opacity-75' /></a></h1>
-      <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 pt-5 '>
+      <div className='grid grid-cols-1 lg:grid-cols-3  gap-4 pt-5 '>
 
         {data.map((item, index) => (
           <motion.div 
@@ -114,7 +114,7 @@ export default function Knowledge({ language }) {
             whileInView={{ x: 0, y: 0 }}
             transition={{ duration: 0.7, ease: "backOut" }}
           
-          className='w-4/5 lg:w-full' key={index}>
+          className='w-full' key={index}>
             <a href={item.link}>
               <div className='bg-gray-800 p-3 rounded-lg flex gap-5 hover:bg-gray-600 transition-all duration-300'>
                 <item.icon size={64} color="var(--color-primary)" className="p-1 rounded" />

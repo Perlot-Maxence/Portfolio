@@ -25,6 +25,7 @@ export default function FooterComponent({ language, openMailModal }) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.5}}
+      className='w-5/6 lg:w-full'
     >
 
       <footer className="text-white mt-52 pb-28 p-2 border-2 border-b-0 border-primary relative">

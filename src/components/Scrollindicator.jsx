@@ -20,7 +20,7 @@ export default function ScrollIndicator() {
   const scrollPercentage = (scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full">
+    <div className="fixed top-0 left-0 w-full h-full -z-10">
       <div
         className="w-1 bg-primary"
         style={{ height: `${scrollPercentage}%` }}
