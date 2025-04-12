@@ -15,7 +15,6 @@ import ScrollIndicator from './components/Scrollindicator'
 import i18n from "./i18n.json"
 import Select from 'react-select'
 import mailPreset from "./mailpreset.json"
-import { Resend } from "resend"
 
 function App() {
 
@@ -96,32 +95,36 @@ function App() {
       return;
     }
 
-    const resend = new Resend(import.meta.env.RESEND_API_KEY);
-
+    document.querySelector("#sendMailBTN").disabled = true;
+    document.querySelector("#sendMailBTN").classList.add("btn-disabled");
+    toast.loading(language == "fr" ? "Envoi de l'email..." : "Sending email...", { id: "mail" });
+    
     try {
-      document.querySelector("#sendMailBTN").disabled = true;
-      document.querySelector("#sendMailBTN").classList.add("btn-disabled");
-      toast.loading(language == "fr" ? "Envoi de l'email..." : "Sending email...", { id: "mail" });
-
-      const {data, err} = await resend.emails.send({
-        from: emailInput.value,
-        to: "perlot.maxence.pro@gmail.com",
-        subject: language == "fr" ? "Demande de contact" : "Contact request",
-        html: mailValue.value,
+      await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: emailInput.value,
+          message: mailValue.value,
+          language,
+        }),
+      }).then((res) => {
+        if (!res.ok) {
+          throw new Error("Error sending email");
+        }
+        return res.json();
+      }).then((data) => {
+        if (data.success) {
+          toast.success(language == "fr" ? "Email envoyé avec succès" : "Email sent successfully", { id: "mail" });
+          closeModal();
+        } else {
+          toast.error(language == "fr" ? "Erreur lors de l'envoi de l'email" : "Error sending email");
+        }
       })
+      ;
 
-      console.log(data);
-      console.log(err);
-
-      if (err) {
-        toast.error(language == "fr" ? "Erreur lors de l'envoi de l'email" : "Error sending email", { id: "mail" });
-        console.error(err);
-        return;
-      } else {
-        toast.success(language == "fr" ? "Email envoyé avec succès" : "Email sent successfully", { id: "mail" });
-        closeModal();
-      }
-      
 
       document.querySelector("#sendMailBTN").disabled = false;
       document.querySelector("#sendMailBTN").classList.remove("btn-disabled");
@@ -184,7 +187,7 @@ function App() {
       <Navbar language={language} />
       <div className='h-screen p-5 lg:p-[15rem] pt-10 pb-60'>
         <ScrollAnimation animateIn='fadeInUp' >
-          <h1 className='wosker text-3xl lg:text-8xl font-bold lg:text-center' dangerouslySetInnerHTML={{ __html: i18n[language].title }}></h1>
+          <h1 className='wosker text-3xl lg:text-8xl lg:text-center' dangerouslySetInnerHTML={{ __html: i18n[language].title }}></h1>
 
           <div className='flex flex-col lg:flex-row w-full justify-center items-center mt-10 gap-5'>
             <a className='btn btn-outline text-2xl' href='#knowledge'>
