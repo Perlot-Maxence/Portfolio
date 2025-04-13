@@ -17,12 +17,10 @@ Here are some of the projects I have worked on:
 - **Minazon**: A website to secure trading in Minecraft.
 - **Steam UI remake**: A UI remake based of a figma.
 
-Check out the [Projects](./projects) folder for more details.
-
 ## Skills
 - Programming Languages: JavaScript, TypeScript, Java, etc.
-- Frameworks: React, ExpressJS, Spring, Vaadin
-- Tools: Git, VScode, etc.
+- Frameworks: React, ExpressJS, Spring, Vaadin.
+- Tools: Git, VScode, Vercel, Supabase, Firebase.
 
 ## Contact
 Feel free to reach out to me:
