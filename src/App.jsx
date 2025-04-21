@@ -1,10 +1,11 @@
+import 'animate.css'
 import "animate.css/animate.compat.css"
+import { motion } from "motion/react"
 import { useEffect, useLayoutEffect, useState } from 'react'
-import { FaArchive } from 'react-icons/fa'
+import { FaArchive, FaFileDownload } from 'react-icons/fa'
 import { MdMail } from 'react-icons/md'
 import { RxCross2 } from "react-icons/rx"
 import Modal from 'react-modal'
-import { motion } from "motion/react"
 import Select from 'react-select'
 import { toast } from 'sonner'
 import './App.css'
@@ -15,7 +16,15 @@ import Projects from './components/Projects'
 import ScrollIndicator from './components/Scrollindicator'
 import i18n from "./i18n.json"
 import mailPreset from "./mailpreset.json"
-import 'animate.css';
+
+export function downloadURI(uri, name) {
+  var link = document.createElement("a");
+  link.setAttribute('download', name);
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
 
 
 function App() {
@@ -197,6 +206,9 @@ function App() {
           <h1 className='wosker text-3xl lg:text-8xl lg:text-center' dangerouslySetInnerHTML={{ __html: i18n[language].title }}></h1>
 
           <div className='flex flex-col lg:flex-row w-full justify-center items-center mt-10 gap-5'>
+            <button className='btn btn-outline text-2xl' onClick={() => { downloadURI(language == "fr" ? "/PERLOT_Maxence_CV.pdf" : "/PERLOT_Maxence_CV_EN.pdf") }}>
+              {i18n[language].cv} <FaFileDownload />
+            </button>
             <a className='btn btn-outline text-2xl' href='#knowledge'>
               {i18n[language].skills} <FaArchive />
             </a>

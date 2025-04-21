@@ -4,21 +4,9 @@ import { FaArrowUp, FaGithub, FaLinkedin } from 'react-icons/fa';
 import frFlag from '../assets/fr.png'
 import gbFlag from '../assets/gb.png'
 import { motion } from 'framer-motion';
+import { downloadURI } from '../App';
 
 export default function FooterComponent({ language, openMailModal }) {
-
-
-
-
-  function downloadURI(uri, name) {
-    var link = document.createElement("a");
-    link.setAttribute('download', name);
-    link.href = uri;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-  }
-
 
   return (
     <motion.div
@@ -35,7 +23,7 @@ export default function FooterComponent({ language, openMailModal }) {
             <button className='btn btn-primary p-1!' onClick={openMailModal}>
               {i18n[language].contact} <MdMail />
             </button>
-            <button className='btn btn-primary p-1!' onClick={() => { downloadURI(language == "fr" ? "/CV.pdf" : "/CV EN.pdf", "CV_Maxence_Perlot.pdf") }}>
+            <button className='btn btn-primary p-1!' onClick={() => { downloadURI(language == "fr" ? "/PERLOT_Maxence_CV.pdf" : "/PERLOT_Maxence_CV_EN.pdf") }}>
               {i18n[language].cv} <MdMail />
             </button>
           </div>
