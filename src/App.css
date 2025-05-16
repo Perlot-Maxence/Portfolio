@@ -1,36 +1,75 @@
 @import "tailwindcss";
 
-
-@theme {
-          --color-primary:#00e8a3;
-          --color-primary-dark:#00be85;
-
-          --color-aquamarine-50: #edfff9;
-          --color-aquamarine-100: #d5fff3;
-          --color-aquamarine-200: #aeffe7;
-          --color-aquamarine-300: #6fffd6;
-          --color-aquamarine-400: #0bfeb5;
-          --color-aquamarine-500: #00e8a3;
-          --color-aquamarine-600: #00be85;
-          --color-aquamarine-700: #00976a;
-          --color-aquamarine-800: #057656;
-          --color-aquamarine-900: #066148;
-          --color-aquamarine-950: #003726;
-}
-
 @custom-variant dark (&:where(.dark, .dark *));
 
-
-/* Hide scrollbar for all elements */
-*::-webkit-scrollbar {
-  display: none;
+@theme dark {
+  --color-accent: #202424
 }
 
 * {
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-  scroll-behavior: smooth;
-  scroll-snap-align: middle;
+  @apply scheme-dark 
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+}
+
+body {
+  @apply bg-[#151419] text-white;
+}
+
+@font-face {
+  font-family: 'Mona Sans';
+  src:
+    url('assets/Mona-Sans.woff2') format('woff2 supports variations'),
+    url('assets/Mona-Sans.woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+}
+
+* {
+  font-family: 'Mona Sans', sans-serif;
+  @apply text-lg text-gray-300;
+  :hover {
+    @apply cursor-default
+  }
+  user-select: none;
+}
+
+h1 {
+  @apply text-2xl xl:text-8xl font-bold;
+}
+
+h2 {
+  @apply text-xl xl:text-5xl;
+}
+
+section {
+  @apply py-7 xl:py-10;
+}
+
+section h1 {
+  @apply text-3xl xl:text-6xl;
+}
+
+section p {
+  @apply pl-2 lg:pl-4 xl:pl-8;
+}
+
+.navigation {
+  @apply flex items-center gap-2 lg:gap-4 w-fit bg-gray-950 p-2 rounded;
+}
+
+.navigation p {
+  @apply text-2xl text-gray-300 hover:text-gray-100;
+}
+
+.navigation svg {
+  @apply border-2 border-gray-300 rounded p-1;
 }
 
 @font-face {
@@ -49,41 +88,4 @@
 
 .boardwalk {
   font-family: 'boardwalk';
-}
-
-.btn {
-  @apply font-semibold py-2 px-4 rounded inline-flex gap-2 items-center cursor-pointer transition duration-200;
-}
-
-.btn-primary {
-  @apply bg-primary text-black hover:bg-primary-dark;
-}
-
-.btn-outline {
-  @apply border border-primary text-primary hover:text-white  hover:bg-primary-dark;
-}
-
-.btn-link {
-  @apply text-primary hover:text-aquamarine-600;
-}
-
-.btn-disabled {
-  @apply bg-gray-200 text-gray-400 cursor-not-allowed;
-}
-
-
-@keyframes mouseAnimation {
-  from {
-    bottom: 65%;
-  }
-  to {
-    bottom: 10%;
-    opacity: 0;
-  }
-  
-}
-
-.animation_mouse {
-  transform: translateX(-50%);
-  animation: mouseAnimation 1.5s infinite ease-in-out;
 }

@@ -1,132 +1,35 @@
-import { CgBrowser } from "react-icons/cg";
-import { FaDatabase, FaLink, FaNode } from "react-icons/fa";
-import { RiFirebaseFill, RiJavaFill, RiJavaLine, RiJavascriptFill, RiReactjsFill, RiSupabaseFill, RiTailwindCssFill } from "react-icons/ri";
-import { SiChartdotjs, SiElectron, SiGodotengine, SiHibernate, SiJavascript, SiSpring, SiTypescript } from "react-icons/si";
-import i18n from "../i18n.json";
-import {motion} from "framer-motion";
-import "animate.css";
+import { SiCss3, SiExpress, SiFirebase, SiHtml5, SiJavascript, SiMysql, SiNodedotjs, SiReact, SiSupabase } from "react-icons/si"
+import Slider from "./Slider"
+import { motion } from "framer-motion"
 
-export default function Knowledge({ language }) {
-  const data = [
-    {
-      title: "React",
-      description: "Frontend · javascript/typescript",
-      icon: RiReactjsFill,
-      link: "https://react.dev/"
-    },
-    {
-      title: "TailwindCSS",
-      description: "Frontend · CSS",
-      icon: RiTailwindCssFill,
-      link: "https://tailwindcss.com/"
-    },
-    {
-      title: "Supabase",
-      description: `Backend · ${language === "fr" ? "Base de données" : "Database"}`,
-      icon: RiSupabaseFill,
-      link: "https://supabase.com/"
-    },
-    {
-      title: "Firebase",
-      description: "Backend · Multifonctions",
-      icon: RiFirebaseFill,
-      link: "https://firebase.com/"
-    },
-    {
-      title: "Chart.js",
-      description: language === "fr" ? "Graphiques web" : "Web graphs",
-      icon: SiChartdotjs,
-      link: "https://www.chartjs.org/"
-    },
-    {
-      title: "Node.js",
-      description: "Backend · javascript",
-      icon: FaNode,
-      link: "https://nodejs.org/"
-    },
-    {
-      title: "Electron",
-      description: language === "fr" ? "Application de bureau" : "Desktop application",
-      icon: SiElectron,
-      link: "https://www.electronjs.org/"
-    },
-    {
-      title: "Spring",
-      description: "Web Java",
-      icon: SiSpring,
-      link: "https://spring.io/"
-    },
-    {
-      title: "Hibernate",
-      description: "ORM Java",
-      icon: SiHibernate,
-      link: "https://hibernate.org"
-    },
-    {
-      title: "Godot",
-      description: language === "fr" ? "C# · Moteur de jeu" : "C# · Game engine",
-      icon: SiGodotengine,
-      link: "https://godotengine.org/"
-    },
-    {
-      title: "JavaScript",
-      description: language === "fr" ? "Langage de programmation" : "Programming language",
-      icon: SiJavascript,
-      link: "https://wikipedia.org/wiki/JavaScript"
-    },
-    {
-      title: "TypeScript",
-      description: language === "fr" ? "Javascript avec typage" : "Javascript with type",
-      icon: SiTypescript,
-      link: "https://wikipedia.org/wiki/TypeScript"
-    },
-    {
-      title: "Java",
-      description: language === "fr" ? "Langage de programmation" : "Programming language",
-      icon: RiJavaFill,
-      link: "https://www.java.com/"
-    },
-    {
-      title: "SQL",
-      description: `Backend · ${language === "fr" ? "Base de données" : "Database"}`,
-      icon: FaDatabase,
-      link: "https://sql.sh/"
-    },
-    {
-      title: "API REST & WebSocket",
-      description: "Backend · Communication",
-      icon: CgBrowser,
-      link: "https://en.wikipedia.org/wiki/API"
-    },
+export default function Knowledge() {
+
+
+  const known = [
+    { icon: SiHtml5, name: "HTML", level: 80 },
+    { icon: SiCss3, name: "CSS", level: 90 },
+    { icon: SiJavascript, name: "JavaScript", level: 80 },
+    { icon: SiReact, name: "React", level: 70 },
+    { icon: SiNodedotjs, name: "Node.js", level: 80 },
+    { icon: SiExpress, name: "Express.js", level: 60 },
+    { icon: SiFirebase, name: "FireBase", level: 35 },
+    { icon: SiSupabase, name: "Supabase", level: 70 },
   ]
 
-  const isPhone = window.innerWidth < 768;
-
-
   return (
-    <section className='pt-[30vh] mt-[20vh] w-5/6 lg:w-full' id='knowledge'>
-      <h1 className='font-bold text-3xl flex gap-2 items-center justify-center ml-[38px]'>{i18n[language].skills} <a href="#knowledge"><FaLink className='opacity-15 hover:opacity-75' /></a></h1>
-      <div className='grid grid-cols-1 lg:grid-cols-3  gap-4 pt-5 '>
-
-        {data.map((item, index) => (
-          <motion.div 
-            initial={{ x: !isPhone ? Math.random() > 0.5 ? 500 : -500 : 0, y: isPhone ? 100 : 0 }}
-            whileInView={{ x: 0, y: 0 }}
-            transition={{ duration: 0.7, ease: "backOut" }}
-          
-          className='w-full' key={index}>
-            <a href={item.link}>
-              <div className='bg-gray-800 p-3 rounded-lg flex gap-5 hover:bg-gray-600 transition-all duration-300'>
-                <item.icon size={64} color="var(--color-primary)" className="p-1 rounded" />
-                <div>
-                  <h2 className='text-xl font-bold'>{item.title}</h2>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            </a>
-          </motion.div>
-        ))}
-      </div>
-    </section>
+    known.map((item, index) => (
+      <motion.div
+        key={item.name}
+        initial={{ opacity: 0, x: index % 2 === 0 ? -300 : 300 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, type: "keyframes", delay: index/2*0.2 }}
+        className='bg-accent p-3 rounded-lg flex gap-5 hover:bg-zinc-700 transition-all duration-300'>
+        <item.icon className="flex-shrink-0" size={64} />
+        <div>
+          <h2 className='text-2xl! lg:text-3xl! font-bold'>{item.name}</h2>
+          <Slider value={item.level} label={`${item.level}%`} className="w-32!" />
+        </div>
+      </motion.div>
+    ))
   )
 }
